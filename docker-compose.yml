@@ -11,8 +11,8 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: "ssdms"
-      MYSQL_USER: "admin"
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
     networks:
       ssdms-network:
         aliases:
@@ -25,6 +25,8 @@ services:
     command: ["/wait-for-it.sh", "ssdms-mysql:3306", "--", "java", "-jar", "api.jar"]
     environment:
       DB_HOST: ssdmsbase
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
     networks:
       - "ssdms-network"
     depends_on:
