@@ -41,6 +41,7 @@ services:
       - "ssdms-network"
     depends_on:
       - ssdms-api
+    container_name: ssdms-proxy
 
 networks:
   ssdms-network:
