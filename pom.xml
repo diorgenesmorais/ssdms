@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.ssdms</groupId>
 	<artifactId>ssdms</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<name>ssdms</name>
 	<description>Stock store dms</description>
 	<properties>

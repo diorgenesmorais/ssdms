@@ -1,4 +1,4 @@
-package com.ssdms.api.resource;
+package com.ssdms.api.resources;
 
 import java.util.List;
 
@@ -10,16 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssdms.domain.model.Categories;
 import com.ssdms.domain.repository.CategoriesRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "Categorias")
 @RestController
 @RequestMapping("/categories")
-public class CategoriesControle {
+public class CategoriesController {
 
 	private CategoriesRepository categoriesRepository;
 
-	public CategoriesControle(CategoriesRepository categoriesRepository) {
+	public CategoriesController(CategoriesRepository categoriesRepository) {
 		this.categoriesRepository = categoriesRepository;
 	}
 
+	@ApiOperation("Lista de categorias")
 	@GetMapping
 	public ResponseEntity<List<Categories>> list() {
 		return ResponseEntity.ok(categoriesRepository.findAll());

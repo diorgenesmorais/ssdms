@@ -46,9 +46,9 @@ docker-compose logs -t -f
 docker-compose down
 ```
 
-- Obter a definição OpenAPI em json
+- Obter a definição OpenAPI em json (OAS3)
 
 ```
-http://localhost:8080/v2/api-docs
+http://localhost:8080/v3/api-docs
 ```
 

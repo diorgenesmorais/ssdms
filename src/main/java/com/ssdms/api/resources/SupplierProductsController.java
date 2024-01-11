@@ -1,4 +1,4 @@
-package com.ssdms.api.resource;
+package com.ssdms.api.resources;
 
 import java.util.List;
 
@@ -11,13 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssdms.domain.model.SupplierProducts;
 import com.ssdms.domain.repository.SupplierProductsRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "Produtos por fornecedor")
 @RestController
-@RequestMapping("/supplier")
-public class SupplierProductsControle {
+@RequestMapping("/supplier-products")
+public class SupplierProductsController {
 
 	@Autowired
 	private SupplierProductsRepository supplierProductsRepository;
 	
+	@ApiOperation("Lista dos produtos por fornecedor")
 	@GetMapping
 	public ResponseEntity<List<SupplierProducts>> list() {
 		return ResponseEntity.ok(supplierProductsRepository.findAll());

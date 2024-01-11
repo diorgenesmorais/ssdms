@@ -1,4 +1,4 @@
-package com.ssdms.api.resource;
+package com.ssdms.api.resources;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,26 +19,33 @@ import com.ssdms.domain.model.Products;
 import com.ssdms.domain.repository.ProductsRepository;
 import com.ssdms.domain.service.ProductService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "Produtos")
 @RestController
 @RequestMapping("/products")
-public class ProductControle {
+public class ProductController {
 
 	@Autowired
 	private ProductsRepository productsRepository;
 	@Autowired
 	private ProductService productService;
 
+	@ApiOperation("Lista de produtos")
 	@GetMapping
 	public ResponseEntity<List<Products>> getAll() {
 		return ResponseEntity.ok(productService.getAll());
 	}
 	
+	@ApiOperation("Obter um produto por seu identificador")
 	@GetMapping("/{id}")
 	public ResponseEntity<Products> findById(@PathVariable String id) {
 		Optional<Products> product = productsRepository.findByCodigo(id);
 		return ResponseEntity.of(product);
 	}
 	
+	@ApiOperation("Adicionar um produto")
 	@PostMapping
 	public ResponseEntity<Products> save(@Valid @RequestBody Products product) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(product));

@@ -1,4 +1,4 @@
-package com.ssdms.api.resource;
+package com.ssdms.api.resources;
 
 import java.util.List;
 
@@ -11,13 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssdms.domain.model.Units;
 import com.ssdms.domain.repository.UnitsRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "Unidades")
 @RestController
 @RequestMapping("/units")
-public class UnitsControle {
+public class UnitsController {
 
 	@Autowired
 	private UnitsRepository unitsRepository;
 	
+	@ApiOperation("detalhes das unidades")
 	@GetMapping
 	public ResponseEntity<List<Units>> list() {
 		return ResponseEntity.ok(unitsRepository.findAll());

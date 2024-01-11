@@ -1,4 +1,4 @@
-package com.ssdms.api.resource;
+package com.ssdms.api.resources;
 
 import java.util.List;
 
@@ -11,13 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssdms.domain.model.Providers;
 import com.ssdms.domain.repository.ProvidersRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(tags = "Fornecedores")
 @RestController
 @RequestMapping("/providers")
-public class ProvidersControle {
+public class ProvidersController {
 
 	@Autowired
 	private ProvidersRepository providersRepository;
 	
+	@ApiOperation("Lista de fornecedores")
 	@GetMapping
 	public ResponseEntity<List<Providers>> list() {
 		return ResponseEntity.ok(providersRepository.findAll());
