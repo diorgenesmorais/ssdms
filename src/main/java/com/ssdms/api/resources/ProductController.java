@@ -50,4 +50,10 @@ public class ProductController {
 	public ResponseEntity<Products> save(@Valid @RequestBody Products product) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(product));
 	}
+
+	@ApiOperation("Filtra produtos por descrição")
+	@GetMapping("/for-description")
+	public ResponseEntity<List<Products>> filterByDescription(String description) {
+		return ResponseEntity.ok(productService.filterByDescription(description));
+	}
 }

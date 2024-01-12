@@ -26,4 +26,8 @@ public class ProductService {
 	public Products save(Products entity) {
 		return repository.save(entity);
 	}
+
+	public List<Products> filterByDescription(String descricao) {
+		return repository.findByDescricaoContaining(descricao);
+	}
 }
