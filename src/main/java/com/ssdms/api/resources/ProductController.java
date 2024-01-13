@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssdms.domain.model.Products;
-import com.ssdms.domain.repository.ProductsRepository;
 import com.ssdms.domain.service.ProductService;
 
 import io.swagger.annotations.Api;
@@ -27,8 +26,6 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/products")
 public class ProductController {
 
-	@Autowired
-	private ProductsRepository productsRepository;
 	@Autowired
 	private ProductService productService;
 
@@ -41,7 +38,7 @@ public class ProductController {
 	@ApiOperation("Obter um produto por seu identificador")
 	@GetMapping("/{id}")
 	public ResponseEntity<Products> findById(@PathVariable String id) {
-		Optional<Products> product = productsRepository.findByCodigo(id);
+		Optional<Products> product = productService.fetchByCodigo(id);
 		return ResponseEntity.of(product);
 	}
 	
