@@ -10,6 +10,12 @@
 > DB_PASS=password
 >
 
+- Configurar as variáveis de ambiente do arquivo .env (linux):
+
+```bash
+export $(cat .env | xargs)
+```
+
 - Criar o JAR e gerar a imagem da API pelo Maven passando as variáveis de ambiente:
 
 ```bash
@@ -52,3 +58,8 @@ docker-compose down
 http://localhost:8080/v3/api-docs
 ```
 
+- Comando uando o Maven para o flyway reparar última migração:
+
+```bash
+mvn flyway:repair -Dflyway.configFiles=src/main/resources/flyway.properties
+```
