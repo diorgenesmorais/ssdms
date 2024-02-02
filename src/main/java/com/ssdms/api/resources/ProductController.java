@@ -38,7 +38,7 @@ public class ProductController {
 	@ApiOperation("Obter um produto por seu identificador")
 	@GetMapping("/{id}")
 	public ResponseEntity<Products> findById(@PathVariable String id) {
-		Optional<Products> product = productService.fetchByCodigo(id);
+		Optional<Products> product = Optional.of(productService.fetchByCodigo(id));			
 		return ResponseEntity.of(product);
 	}
 	

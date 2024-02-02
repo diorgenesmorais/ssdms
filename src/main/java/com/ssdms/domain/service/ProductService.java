@@ -1,7 +1,6 @@
 package com.ssdms.domain.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +11,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.dms.useful.exception.EntityNotFoundException;
 import com.ssdms.domain.model.Products;
 import com.ssdms.domain.repository.ProductsRepository;
 import com.ssdms.infrastructure.repository.spec.ProductsSpec;
@@ -50,7 +50,8 @@ public class ProductService {
 		return repository.findAll(ProductsSpec.fetchByDescription(descricao));
 	}
 
-	public Optional<Products> fetchByCodigo(String codigo) {
-		return repository.findOne(ProductsSpec.fetchByCodigo(codigo));
+	public Products fetchByCodigo(String codigo) {
+		return repository.findOne(ProductsSpec.fetchByCodigo(codigo))
+				.orElseThrow(() -> new EntityNotFoundException(String.format("Esse %s código não retornou um produto", codigo)));
 	}
 }
