@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.dms.useful.exception.EntityNotFoundException;
@@ -42,7 +43,7 @@ public class ProductService {
 	}
 
 	@Transactional
-	public Products save(Products entity) {
+	public Products save(@NonNull Products entity) {
 		return repository.save(entity);
 	}
 
