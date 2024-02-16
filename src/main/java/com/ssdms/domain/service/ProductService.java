@@ -36,8 +36,8 @@ public class ProductService {
 		
 		Root<Products> root = criteria.from(Products.class);
 		
-		root.fetch("categories");
-		root.fetch("units");
+		root.fetch("category");
+		root.fetch("unit");
 		
 		return manager.createQuery(criteria).getResultList();
 	}
@@ -52,7 +52,7 @@ public class ProductService {
 	}
 
 	public Products fetchByCodigo(String codigo) {
-		return repository.findOne(ProductsSpec.fetchByCodigo(codigo))
+		return repository.findOne(ProductsSpec.fetchByCode(codigo))
 				.orElseThrow(() -> new EntityNotFoundException(String.format("Esse %s código não retornou um produto", codigo)));
 	}
 }

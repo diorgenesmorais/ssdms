@@ -20,6 +20,7 @@
 		<java.version>11</java.version>
 		<dockerfile-maven-version>1.4.13</dockerfile-maven-version>
 		<springfox.version>3.0.0</springfox.version>
+		<modelmapper.version>3.0.0</modelmapper.version>
 	</properties>
 
 	<repositories>
@@ -77,6 +78,12 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>${springfox.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>${modelmapper.version}</version>
 		</dependency>
 	</dependencies>
 

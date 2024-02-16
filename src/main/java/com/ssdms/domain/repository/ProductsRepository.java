@@ -6,15 +6,17 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.lang.NonNull;
 
 import com.ssdms.domain.model.Products;
 
 public interface ProductsRepository extends JpaRepository<Products, Integer>, JpaSpecificationExecutor<Products> {
 
-    @Query("from Products p join p.categories join p.units")
+    @Query("from Products p join p.category join p.unit")
+	@NonNull
     List<Products> findAll();
 
-    Optional<Products> findByCodigo(String codigo);
+    Optional<Products> findByCode(String codigo);
     
-    List<Products> findByDescricaoContaining(String descricao);
+    List<Products> findByDescriptionContaining(String descricao);
 }

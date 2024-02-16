@@ -3,6 +3,7 @@ package com.ssdms.domain.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "products")
@@ -20,20 +25,31 @@ public class Products {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotBlank
-	private String codigo;
-	private String descricao;
+	@Column(name = "codigo", nullable = false)
+	private String code;
+	@NotBlank
+	@Column(name = "descricao", nullable = false)
+	private String description;
+	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "categoria_id")
-	private Categories categories;
+	@JoinColumn(name = "categoria_id", nullable = false)
+	private Category category;
 	private String NCM;
 	private String CEST;
 	private String GTIN;
-	private BigDecimal preco;
-	private BigDecimal estoque;
+	@PositiveOrZero
+	@Column(name = "preco")
+	private BigDecimal price;
+	@NotNull
+	@Column(name = "estoque")
+	private BigDecimal stock;
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "unidade_id")
-	private Units units;
-	private String detalhes;
+	private Unit unit;
+	@Column(name = "detalhes")
+	private String details;
+	@UpdateTimestamp
 	private LocalDate updateAt;
 
 	public Integer getId() {
@@ -44,28 +60,28 @@ public class Products {
 		this.id = id;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public String getCode() {
+		return code;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCode(String codigo) {
+		this.code = codigo;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String descricao) {
+		this.description = descricao;
 	}
 
-	public Categories getCategories() {
-		return categories;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategories(Categories categories) {
-		this.categories = categories;
+	public void setCategory(Category categories) {
+		this.category = categories;
 	}
 
 	public String getNCM() {
@@ -92,36 +108,36 @@ public class Products {
 		GTIN = gTIN;
 	}
 
-	public BigDecimal getPreco() {
-		return preco;
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
+	public void setPrice(BigDecimal preco) {
+		this.price = preco;
 	}
 
-	public BigDecimal getEstoque() {
-		return estoque;
+	public BigDecimal getStock() {
+		return stock;
 	}
 
-	public void setEstoque(BigDecimal estoque) {
-		this.estoque = estoque;
+	public void setStock(BigDecimal estoque) {
+		this.stock = estoque;
 	}
 
-	public Units getUnits() {
-		return units;
+	public Unit getUnit() {
+		return unit;
 	}
 
-	public void setUnits(Units units) {
-		this.units = units;
+	public void setUnit(Unit units) {
+		this.unit = units;
 	}
 
-	public String getDetalhes() {
-		return detalhes;
+	public String getDetails() {
+		return details;
 	}
 
-	public void setDetalhes(String detalhes) {
-		this.detalhes = detalhes;
+	public void setDetails(String detalhes) {
+		this.details = detalhes;
 	}
 
 	public LocalDate getUpdateAt() {

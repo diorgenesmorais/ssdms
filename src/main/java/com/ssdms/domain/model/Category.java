@@ -7,13 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "units")
-public class Units {
+@Table(name = "categories")
+public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String description;
+	private String name;
 
 	public Integer getId() {
 		return id;
@@ -23,12 +23,12 @@ public class Units {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class Units {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Units other = (Units) obj;
+		Category other = (Category) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -2,8 +2,8 @@ package com.ssdms.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ssdms.domain.model.Units;
+import com.ssdms.domain.model.Unit;
 
-public interface UnitsRepository extends JpaRepository<Units, Integer> {
+public interface UnitsRepository extends JpaRepository<Unit, Integer> {
 
 }

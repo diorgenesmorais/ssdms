@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssdms.domain.model.Categories;
+import com.ssdms.domain.model.Category;
 import com.ssdms.domain.repository.CategoriesRepository;
 
 import io.swagger.annotations.Api;
@@ -26,7 +26,7 @@ public class CategoriesController {
 
 	@ApiOperation("Lista de categorias")
 	@GetMapping
-	public ResponseEntity<List<Categories>> list() {
+	public ResponseEntity<List<Category>> list() {
 		return ResponseEntity.ok(categoriesRepository.findAll());
 	}
 }

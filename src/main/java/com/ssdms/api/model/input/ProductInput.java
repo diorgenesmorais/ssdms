@@ -1,18 +1,34 @@
-package com.ssdms.api.model;
+package com.ssdms.api.model.input;
 
 import java.math.BigDecimal;
 
-public class ProductModel {
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
+import org.springframework.lang.NonNull;
+
+public class ProductInput {
+
+	@NotBlank
 	private String code;
+	@NotBlank
 	private String description;
-	private CategoryModel category;
+	@Valid
+	@NotNull
+	private CategoryIdInput category;
 	private String NCM;
 	private String CEST;
 	private String GTIN;
+	@NotNull
+	@PositiveOrZero
 	private BigDecimal price;
+	@NotNull
 	private BigDecimal stock;
-	private UnitModel unit;
+	@Valid
+	@NotNull
+	private UnitIdInput unit;
 	private String details;
 
 	public String getCode() {
@@ -31,12 +47,12 @@ public class ProductModel {
 		this.description = description;
 	}
 
-	public CategoryModel getCategory() {
+	public CategoryIdInput getCategory() {
 		return category;
 	}
 
-	public void setCategory(CategoryModel categoriaModel) {
-		this.category = categoriaModel;
+	public void setCategory(@NonNull CategoryIdInput category) {
+		this.category = category;
 	}
 
 	public String getNCM() {
@@ -79,11 +95,11 @@ public class ProductModel {
 		this.stock = stock;
 	}
 
-	public UnitModel getUnit() {
+	public UnitIdInput getUnit() {
 		return unit;
 	}
 
-	public void setUnit(UnitModel unit) {
+	public void setUnit(@NonNull UnitIdInput unit) {
 		this.unit = unit;
 	}
 

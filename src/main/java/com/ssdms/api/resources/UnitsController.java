@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssdms.domain.model.Units;
+import com.ssdms.domain.model.Unit;
 import com.ssdms.domain.repository.UnitsRepository;
 
 import io.swagger.annotations.Api;
@@ -24,7 +24,7 @@ public class UnitsController {
 	
 	@ApiOperation("detalhes das unidades")
 	@GetMapping
-	public ResponseEntity<List<Units>> list() {
+	public ResponseEntity<List<Unit>> list() {
 		return ResponseEntity.ok(unitsRepository.findAll());
 	}
 }

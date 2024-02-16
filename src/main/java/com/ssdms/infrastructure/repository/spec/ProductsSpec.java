@@ -8,19 +8,19 @@ public class ProductsSpec {
 
 	public static Specification<Products> fetchByDescription(String descricao) {
 		return (root, query, builder) -> {
-			root.fetch("categories");
-			root.fetch("units");
+			root.fetch("category");
+			root.fetch("unit");
 			
-			return builder.like(root.get("descricao"), "%" + descricao + "%");
+			return builder.like(root.get("description"), "%" + descricao + "%");
 		};
 	}
 
-	public static Specification<Products> fetchByCodigo(String codigo) {
+	public static Specification<Products> fetchByCode(String codigo) {
 		return (root, query, builder) -> {
-			root.fetch("categories");
-			root.fetch("units");
+			root.fetch("category");
+			root.fetch("unit");
 			
-			return builder.like(root.get("codigo"), codigo);
+			return builder.like(root.get("code"), codigo);
 		};
 	}
 }
