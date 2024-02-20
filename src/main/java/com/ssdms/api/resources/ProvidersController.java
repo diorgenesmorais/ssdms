@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssdms.api.assembler.ProductModelAssembler;
 import com.ssdms.api.assembler.ProviderModelAssembler;
+import com.ssdms.api.assembler.ProviderProductModelAssembler;
 import com.ssdms.api.model.ProductModel;
 import com.ssdms.api.model.ProviderModel;
+import com.ssdms.api.model.ProviderProductsModel;
 import com.ssdms.domain.model.Providers;
 import com.ssdms.domain.repository.ProvidersRepository;
 
@@ -34,6 +36,9 @@ public class ProvidersController {
 	
 	@Autowired
 	private ProductModelAssembler productModelAssembler;
+	
+	@Autowired
+	private ProviderProductModelAssembler providerProductModelAssembler;
 		
 	@ApiOperation("Lista de fornecedores")
 	@GetMapping
@@ -45,10 +50,10 @@ public class ProvidersController {
 	
 	@ApiOperation("Obter um fornecedor")
 	@GetMapping( path = "/{id}" )
-	public ResponseEntity<ProviderModel> getOneProvider(@PathVariable @NonNull Integer id) {
+	public ResponseEntity<ProviderProductsModel> getOneProvider(@PathVariable @NonNull Integer id) {
 		Optional<Providers> provider = providersRepository.findById(id);
 		
-		return ResponseEntity.ok(providerModelAssembler.toModel(provider.get()));
+		return ResponseEntity.ok(providerProductModelAssembler.toModel(provider.get()));
 	}
 	
 	@ApiOperation("Obter a lista de produtos do fornecedor")

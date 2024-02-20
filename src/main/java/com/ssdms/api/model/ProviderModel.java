@@ -1,13 +1,9 @@
 package com.ssdms.api.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import com.dms.useful.UFBrasil;
-import com.ssdms.domain.model.Products;
 
 public class ProviderModel {
 
@@ -21,7 +17,6 @@ public class ProviderModel {
 	private String email;
 	private String site;
 	private String comments;
-	private Set<Products> products = new HashSet<>();
 
 	public String getCnpj() {
 		return cnpj;
@@ -93,14 +88,6 @@ public class ProviderModel {
 
 	public void setComments(String comments) {
 		this.comments = comments;
-	}
-
-	public Set<Products> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<Products> products) {
-		this.products = products;
 	}
 
 }

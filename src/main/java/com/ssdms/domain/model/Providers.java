@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +35,7 @@ public class Providers {
 	private String email;
 	private String site;
 	private String comments;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "provider_products", 
 		joinColumns = @JoinColumn(name = "provider_id"),
 		inverseJoinColumns = @JoinColumn(name = "product_id"))

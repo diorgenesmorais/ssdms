@@ -1,7 +1,7 @@
 package com.ssdms.api.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,7 +21,7 @@ public class ProviderProductsModel {
 	private String email;
 	private String site;
 	private String comments;
-	private List<Products> products = new ArrayList<>();
+	private Set<Products> products = new HashSet<>();
 
 	public String getCnpj() {
 		return cnpj;
@@ -95,11 +95,11 @@ public class ProviderProductsModel {
 		this.comments = comments;
 	}
 
-	public List<Products> getProducts() {
+	public Set<Products> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<Products> products) {
+	public void setProducts(Set<Products> products) {
 		this.products = products;
 	}
 
