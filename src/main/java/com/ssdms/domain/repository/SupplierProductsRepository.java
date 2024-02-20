@@ -13,4 +13,6 @@ public interface SupplierProductsRepository extends JpaRepository<SupplierProduc
 	@Query("from SupplierProducts s join s.provider join s.product p join p.category join p.unit")
 	@Override
 	public @NonNull List<SupplierProducts> findAll();
+	
+	
 }

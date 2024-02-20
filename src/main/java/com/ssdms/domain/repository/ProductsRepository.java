@@ -19,4 +19,5 @@ public interface ProductsRepository extends JpaRepository<Products, Integer>, Jp
     Optional<Products> findByCode(String codigo);
     
     List<Products> findByDescriptionContaining(String descricao);
+    
 }
