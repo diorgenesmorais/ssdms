@@ -55,4 +55,9 @@ public class ProductService {
 		return repository.findOne(ProductsSpec.fetchByCode(codigo))
 				.orElseThrow(() -> new EntityNotFoundException(String.format("Esse %s código não retornou um produto", codigo)));
 	}
+
+	public Products fetchById(@NonNull Integer id) {
+		return repository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException(String.format("O %s id não retornou um produto", id)));
+	}
 }

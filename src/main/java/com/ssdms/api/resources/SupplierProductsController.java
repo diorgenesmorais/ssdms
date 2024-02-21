@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssdms.domain.model.SupplierProducts;
+import com.ssdms.domain.model.ProviderProducts;
 import com.ssdms.domain.repository.SupplierProductsRepository;
 
 import io.swagger.annotations.Api;
@@ -19,12 +19,12 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/supplier-products")
 public class SupplierProductsController {
 
-	@Autowired
-	private SupplierProductsRepository supplierProductsRepository;
-	
-	@ApiOperation("Lista dos produtos por fornecedor")
-	@GetMapping
-	public ResponseEntity<List<SupplierProducts>> list() {
-		return ResponseEntity.ok(supplierProductsRepository.findAll());
-	}
+//	@Autowired
+//	private SupplierProductsRepository supplierProductsRepository;
+//	
+//	@ApiOperation("Lista dos produtos por fornecedor")
+//	@GetMapping
+//	public ResponseEntity<List<ProviderProducts>> list() {
+//		return ResponseEntity.ok(supplierProductsRepository.findAll());
+//	}
 }

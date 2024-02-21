@@ -8,20 +8,20 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ssdms.api.model.ProviderProductsModel;
+import com.ssdms.api.model.ProviderFullModel;
 import com.ssdms.domain.model.Providers;
 
 @Component
-public class ProviderProductModelAssembler {
+public class ProviderFullModelAssembler {
 
 	@Autowired
 	private ModelMapper modelMapper;
 
-	public ProviderProductsModel toModel(Providers provider) {
-		return modelMapper.map(provider, ProviderProductsModel.class);
+	public ProviderFullModel toModel(Providers provider) {
+		return modelMapper.map(provider, ProviderFullModel.class);
 	}
 
-	public List<ProviderProductsModel> toCollectionModel(Collection<Providers> providers) {
+	public List<ProviderFullModel> toCollectionModel(Collection<Providers> providers) {
 		return providers.stream()
 					.map(provider -> toModel(provider))
 					.collect(Collectors.toList());

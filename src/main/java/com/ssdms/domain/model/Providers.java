@@ -154,4 +154,7 @@ public class Providers {
 		return true;
 	}
 
+	public boolean addProduct(Products product) {
+		return getProducts().add(product);
+	}
 }
