@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.dms.useful.exception.EntityNotFoundException;
 import com.ssdms.domain.model.Products;
 import com.ssdms.domain.repository.ProductsRepository;
+import com.ssdms.domain.repository.filter.ProductFilter;
 import com.ssdms.infrastructure.repository.spec.ProductsSpec;
 
 @Service
@@ -59,5 +60,9 @@ public class ProductService {
 	public Products fetchById(@NonNull Integer id) {
 		return repository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException(String.format("O %s id não retornou um produto", id)));
+	}
+	
+	public List<Products> findByFilter(ProductFilter filter) {
+		return repository.findAll(ProductsSpec.usingFilter(filter));
 	}
 }

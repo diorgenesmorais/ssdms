@@ -22,6 +22,7 @@ import com.ssdms.api.assembler.ProductModelAssembler;
 import com.ssdms.api.model.ProductModel;
 import com.ssdms.api.model.input.ProductInput;
 import com.ssdms.domain.model.Products;
+import com.ssdms.domain.repository.filter.ProductFilter;
 import com.ssdms.domain.service.ProductService;
 
 import io.swagger.annotations.Api;
@@ -43,8 +44,8 @@ public class ProductController {
 
 	@ApiOperation("Lista de produtos")
 	@GetMapping
-	public ResponseEntity<List<ProductModel>> getAll() {
-		var products = productService.getAll();
+	public ResponseEntity<List<ProductModel>> getAll(ProductFilter fields) {
+		var products = productService.findByFilter(fields);
 
 		return ResponseEntity.ok(productModalAssembler.toCollectionModel(products));
 	}
