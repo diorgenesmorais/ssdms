@@ -51,6 +51,14 @@ public class ProductsSpec {
 			if (productFilter.isGTINPresent()) {
 				predicates.add(builder.equal(root.get("GTIN"), productFilter.getGTIN()));
 			}
+			
+			if (productFilter.isCategoryPresent()) {
+				predicates.add(builder.like(root.get("category").get("name"), getLikeValue(productFilter.getCategoryName())));
+			}
+			
+			if (productFilter.isUnitDescriptionPresent()) {
+				predicates.add(builder.like(root.get("unit").get("description"), getLikeValue(productFilter.getUnitDescription())));
+			}
 
 			return builder.and(predicates.toArray(new Predicate[0]));
 		};
