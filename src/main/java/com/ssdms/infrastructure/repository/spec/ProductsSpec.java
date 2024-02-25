@@ -35,8 +35,10 @@ public class ProductsSpec {
 
 	public static Specification<Products> usingFilter(ProductFilter productFilter) {
 		return (root, query, builder) -> {
-			root.fetch("category");
-			root.fetch("unit");
+			if (Products.class.equals(query.getResultType())) {
+				root.fetch("category");
+				root.fetch("unit");				
+			}
 
 			var predicates = new ArrayList<Predicate>();
 

@@ -6,6 +6,9 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -42,14 +45,16 @@ public class ProductController {
 	@Autowired
 	private ProductInputDisassembler productInputDisassembler;
 
-	@ApiOperation("Lista de produtos")
+	@ApiOperation("Lista de produtos com filtro e paginação")
 	@GetMapping
-	public ResponseEntity<List<ProductModel>> getAll(ProductFilter fields) {
-		var products = productService.findByFilter(fields);
+	public ResponseEntity<Page<ProductModel>> getAll(ProductFilter fields,
+			@NonNull @PageableDefault(size = 10) Pageable pageble) {
 
-		return ResponseEntity.ok(productModalAssembler.toCollectionModel(products));
+		var products = productService.findByFilter(fields, pageble);
+
+		return ResponseEntity.ok(productModalAssembler.toListPage(products));
 	}
-	
+
 	@SuppressWarnings("null")
 	@ApiOperation("Obter um produto por seu identificador")
 	@GetMapping( path = "/{id}" )

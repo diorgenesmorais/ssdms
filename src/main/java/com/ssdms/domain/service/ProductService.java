@@ -9,6 +9,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +64,7 @@ public class ProductService {
 				.orElseThrow(() -> new EntityNotFoundException(String.format("O %s id não retornou um produto", id)));
 	}
 	
-	public List<Products> findByFilter(ProductFilter filter) {
-		return repository.findAll(ProductsSpec.usingFilter(filter));
+	public Page<Products> findByFilter(ProductFilter filter, @NonNull Pageable pageble) {
+		return repository.findAll(ProductsSpec.usingFilter(filter), pageble);
 	}
 }

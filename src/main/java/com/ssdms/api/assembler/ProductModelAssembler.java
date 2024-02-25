@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import com.ssdms.api.model.ProductModel;
@@ -25,5 +26,9 @@ public class ProductModelAssembler {
 		return products.stream()
 					.map(product -> toModel(product))
 					.collect(Collectors.toList());
+	}
+
+	public Page<ProductModel> toListPage(Page<Products> products) {
+		return products.map(product -> toModel(product));
 	}
 }
