@@ -1,5 +1,6 @@
 package com.ssdms.domain.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class SupplierKeyId implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 3614650062436297576L;
 	@Column(name = "provider_id")
 	private Integer providerId;

@@ -1,7 +1,6 @@
 package com.ssdms.domain.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.dms.useful.UFBrasil;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,8 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import com.dms.useful.UFBrasil;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "providers")

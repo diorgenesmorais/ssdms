@@ -173,4 +173,11 @@ public class Products {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Products [id=" + id + ", code=" + code + ", description=" + description + ", category=" + category
+				+ ", NCM=" + NCM + ", CEST=" + CEST + ", GTIN=" + GTIN + ", price=" + price + ", stock=" + stock
+				+ ", unit=" + unit + ", details=" + details + ", updateAt=" + updateAt + "]";
+	}
+
 }
